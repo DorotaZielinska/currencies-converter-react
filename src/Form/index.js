@@ -1,4 +1,8 @@
+import React, { useState} from "react";
+import { currencies } from "./currencies";
+import { Result } from "./Result";
 import "./style.css";
+
 
 const Form = () => (
     <form className="form ">
@@ -14,19 +18,17 @@ const Form = () => (
             <p>
                 <label>
                     <span className="form__labelText">Przelicz na:</span>
-                    <select className="form__field" name="foreignCurrency">
+                    <select 
+                    className="form__field" name="foreignCurrency">
                         <option value="EUR">Euro</option>
                         <option value="USD">Dolar amerykański</option>
                         <option value="GBP">Funt brytyjski</option>
                     </select>
                 </label>
             </p>
-            <p>
-                <label>
-                    <span className="form__labelText">Kwota po przeliczeniu:</span>
-                    <input className="form__field" name="amountAfterConvert" type="number" disabled />
-                </label>
-            </p>
+        
+        < Result />
+            
         </fieldset>
         <p>*Pole obowiązkowe</p>
         <div>
