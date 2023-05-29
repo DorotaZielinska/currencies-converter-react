@@ -7,9 +7,17 @@ import "./style.css";
 const Form = () => {
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState(currencies[0].short);
+    
+    const onFormSubmit =(event) => {
+        event.preventDefault ();
+       
+    }
 
     return (
-        <form className="form ">
+        <form 
+        className="form "
+        onSubmit={onFormSubmit}
+        >
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Kalkulator walut</legend>
                 <p>
@@ -46,14 +54,21 @@ const Form = () => {
                         </select>
                     </label>
                 </p>
-                < Result />
+                < Result  />
             </fieldset>
             <p>*Pole obowiązkowe</p>
             <div>
-                <button className="form__button">Przelicz</button>
+                <button
+                    className="form__button">
+                    Przelicz
+                </button>
             </div>
             <div>
-                <button className="form__button" type="reset">Wyczyść</button>
+                <button
+                    className="form__button"
+                    type="reset">
+                    Wyczyść
+                </button>
             </div>
             <p className="form__paragraph">Kalkulator przelicza wartość dowolnie wybranych walut. Najnowsza tabela kursów
                 średnich NBP pochodzi z
