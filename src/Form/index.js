@@ -4,13 +4,13 @@ import { Result } from "./Result";
 import "./style.css";
 
 
-const Form = () => {
+const Form = ({calculateResult, result}) => {
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState(currencies[0].short);
     
     const onFormSubmit =(event) => {
         event.preventDefault ();
-       
+        calculateResult(amount, currency);   
     }
 
     return (
@@ -54,7 +54,7 @@ const Form = () => {
                         </select>
                     </label>
                 </p>
-                < Result  />
+                < Result result={result} />
             </fieldset>
             <p>*Pole obowiązkowe</p>
             <div>

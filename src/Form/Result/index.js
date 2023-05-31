@@ -1,9 +1,5 @@
-import { useState } from "react";
 
-export const Result = () => {
-    const [result, setResult] = useState("");
-
-    return (
+export const Result = ({result, setResult}) => (
         <p>
             <label>
                 <span
@@ -18,4 +14,3 @@ export const Result = () => {
             </label>
         </p>
     )
-}
