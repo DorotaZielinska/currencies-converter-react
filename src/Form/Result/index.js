@@ -1,16 +1,17 @@
+import React from "react";
 
-export const Result = ({result, setResult}) => (
-        <p>
-            <label>
-                <span
-                    className="form__labelText">Kwota po przeliczeniu:</span>
-                <input
-                    value={result}
-                    onChange={({ target }) => setResult(target.value)}
-                    className="form__field"
-                    name="amountAfterConvert"
-                    type="number"
-                    disabled />
-            </label>
-        </p>
-    )
+
+export const Result = ({ result }) => (
+    <p className="form__paragraph">
+        Kwota po przeliczeniu: <span>
+            {!!result && (
+                <>
+                    {result.sourceAmount.toFixed(2)}&nbsp;PLN&nbsp;={" "}
+                    <strong>
+                        {result.targetAmount.toFixed(2)}&nbsp;{result.currency}
+                    </strong>
+                </>
+            )}
+        </span>
+    </p>
+);

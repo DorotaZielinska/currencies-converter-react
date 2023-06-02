@@ -4,19 +4,19 @@ import { Result } from "./Result";
 import "./style.css";
 
 
-const Form = ({calculateResult, result}) => {
+const Form = ({ calculateResult, result }) => {
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState(currencies[0].short);
-    
-    const onFormSubmit =(event) => {
-        event.preventDefault ();
-        calculateResult(amount, currency);   
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        calculateResult(currency, amount);
     }
 
     return (
-        <form 
-        className="form "
-        onSubmit={onFormSubmit}
+        <form
+            className="form "
+            onSubmit={onFormSubmit}
         >
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Kalkulator walut</legend>
@@ -54,9 +54,9 @@ const Form = ({calculateResult, result}) => {
                         </select>
                     </label>
                 </p>
-                < Result result={result} />
             </fieldset>
             <p>*Pole obowiązkowe</p>
+            < Result result={result} />
             <div>
                 <button
                     className="form__button">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Form from "./Form";
 import { currencies } from './Form/currencies';
 
@@ -10,6 +10,7 @@ function App() {
     setResult({
       sourceAmount: +amount,
       targetAmount: amount / rate,
+      currency,
     })
   }
   return (
