@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export const Result = ({ result }) => (
     <p className="form__paragraph">
         Kwota po przeliczeniu: <span>

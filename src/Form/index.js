@@ -3,8 +3,7 @@ import { currencies } from "./currencies";
 import { Result } from "./Result";
 import "./style.css";
 
-
-const Form = ({ calculateResult, result }) => {
+const Form = ({ calculateResult, result, setResult }) => {
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState(currencies[0].short);
 
@@ -13,6 +12,11 @@ const Form = ({ calculateResult, result }) => {
         calculateResult(currency, amount);
     }
 
+    const handleReset = () => {
+        setAmount("");
+        setResult("");
+    }
+       
     return (
         <form
             className="form "
@@ -66,7 +70,8 @@ const Form = ({ calculateResult, result }) => {
             <div>
                 <button
                     className="form__button"
-                    type="reset">
+                    type="reset"
+                    onClick={() => handleReset()}>
                     Wyczyść
                 </button>
             </div>
