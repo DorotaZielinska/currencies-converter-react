@@ -3,9 +3,19 @@ import { currencies } from "./currencies";
 import { Result } from "./Result";
 import "./style.css";
 
-const Form = ({ calculateResult, result, setResult }) => {
+const Form = () => {
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState(currencies[0].short);
+    const [result, setResult] = useState("");
+
+    const calculateResult = () => {
+        const rate = currencies.find(({ short }) => short === currency).rate;
+        setResult({
+            sourceAmount: +amount,
+            targetAmount: amount / rate,
+            currency,
+        })
+    }
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -16,11 +26,14 @@ const Form = ({ calculateResult, result, setResult }) => {
         setAmount("");
         setResult("");
     }
-       
+
     return (
         <form
-            className="form "
+            className="form"
             onSubmit={onFormSubmit}
+            result={result}
+            calculateResult={calculateResult}
+            setResult={setResult}
         >
             <fieldset className="form__fieldset">
                 <legend className="form__legend">Kalkulator walut</legend>
