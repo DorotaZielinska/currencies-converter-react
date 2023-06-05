@@ -1,11 +1,11 @@
 # Currency-converter
-![currency-converter-react](public/currentscreenshotcurrency.png)
+![currency-converter-react](public/screenshotcurrencyupdate.png)
 ## Demo
 https://dorotazielinska.github.io/currencies-converter-react/
 
 This application is easy to use, please type in the first field ("Kwota w PLN*") the amount in PLN, the next step is to choose one from three available currencies, which is in the second field ("Waluta") and last step is to check result by click "Przelicz".
 ## Description
-This application I created as a homework of my programing cours at You Code, and to remove that aplication to React.
+This application I created as a homework of my programing cours at You Code, and to remove that aplication to React, and with information about current Date and time, you can see that on the right corner.
 The main prupose of that application is to check how much money you will get if you want to exchange from polish "zloty" PLN to some other available
 currencies in this simple application.
 Returned values are based on data obtained from the Polish National Bank on 09.01.2023. If you want reset form press button "Wyczyść".
@@ -16,6 +16,7 @@ Returned values are based on data obtained from the Polish National Bank on 09.0
 - BEM convention
 - React
 - babel
+- hooks useState, useEffect
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
