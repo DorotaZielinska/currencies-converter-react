@@ -1,7 +1,8 @@
 import React from "react";
+import "./style.css";
 
 export const Result = ({ result }) => (
-    <p className="form__paragraph">
+    <p className="result">
         Kwota po przeliczeniu: <span>
             {!!result && (
                 <>
