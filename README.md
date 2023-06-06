@@ -1,5 +1,5 @@
 # Currency-converter
-![currency-converter-react](public/screenshotcurrencyupdate.png)
+![currency-converter-react](public/updatecurrencyconverter.png)
 ## Demo
 https://dorotazielinska.github.io/currencies-converter-react/
 
