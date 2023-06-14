@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { currencies } from "./currencies";
 import { Result } from "./Result";
-import "./style.css";
+import { Button, Field, FormFildset, FormLegend, Info, LabelText } from "./styled";
 
 const Form = () => {
     const [amount, setAmount] = useState("");
@@ -35,15 +35,14 @@ const Form = () => {
             calculateResult={calculateResult}
             setResult={setResult}
         >
-            <fieldset className="form__fieldset">
-                <legend className="form__legend">Kalkulator walut</legend>
+            <FormFildset className="form__fieldset">
+                <FormLegend>Kalkulator walut</FormLegend>
                 <p>
                     <label>
-                        <span className="form__labelText">Kwota w PLN*:</span>
-                        <input
+                        <LabelText>Kwota w PLN*:</LabelText>
+                        <Field
                             value={amount}
                             onChange={({ target }) => setAmount(target.value)}
-                            className="form__field"
                             name="amountInPln"
                             type="number"
                             min="1"
@@ -54,11 +53,11 @@ const Form = () => {
                 </p>
                 <p>
                     <label>
-                        <span className="form__labelText">Przelicz na:</span>
-                        <select
+                        <LabelText>Przelicz na:</LabelText>
+                        <Field
+                            as="select"
                             value={currency}
                             onChange={({ target }) => setCurrency(target.value)}
-                            className="form__field"
                             name="foreignCurrency">
                             {currencies.map((currency => (
                                 <option
@@ -68,31 +67,31 @@ const Form = () => {
                                     {currency.name}
                                 </option>
                             )))}
-                        </select>
+                        </Field>
                     </label>
                 </p>
-            </fieldset>
+            </FormFildset>
             <p>*Pole obowiązkowe</p>
             < Result result={result} />
-            <div>
-                <button
+            <p>
+                <Button
                     className="form__button">
                     Przelicz
-                </button>
-            </div>
-            <div>
-                <button
+                </Button>
+            </p>
+            <p>
+                <Button
                     className="form__button"
                     type="reset"
                     onClick={() => handleReset()}>
                     Wyczyść
-                </button>
-            </div>
-            <p className="form__paragraph">Kalkulator przelicza wartość dowolnie wybranych walut. Najnowsza tabela kursów
+                </Button>
+            </p>
+            <Info>Kalkulator przelicza wartość dowolnie wybranych walut. Najnowsza tabela kursów
                 średnich NBP pochodzi z
                 dnia
                 2023-01-09.
-            </p>
+            </Info>
         </form>
     );
 }
