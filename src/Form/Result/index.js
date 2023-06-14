@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css";
+import { ResultWrapper } from "./styled";
 
 export const Result = ({ result }) => (
-    <p className="result">
+    <ResultWrapper>
         Kwota po przeliczeniu: <span>
             {!!result && (
                 <>
@@ -13,5 +13,5 @@ export const Result = ({ result }) => (
                 </>
             )}
         </span>
-    </p>
+    </ResultWrapper>
 );
