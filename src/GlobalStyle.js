@@ -14,7 +14,7 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   font-family: 'Inter', sans-serif;
-  color: black;
+  color: ${({ theme }) => theme.color.black};
   background-image: url("${background}");
   background-size: cover;
   background-position: center;

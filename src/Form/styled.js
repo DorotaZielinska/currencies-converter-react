@@ -6,50 +6,55 @@ export const LabelText = styled.span`
     display: inline-block;
     margin-right: 5px;
 `;
+
 export const Field = styled.input`
-    border: 1px solid #e7d6b1;
+    border: 1px solid ${({ theme }) => theme.color.hampton};
     padding: 10px;
     width: 100%;
     max-width: 400 px;
     border-radius: 5px;
-    background-color: azure;
-    color: black;
+    background-color: ${({ theme }) => theme.color.twilightBlue};
+    color: ${({ theme }) => theme.color.black};
 
     &:required {
-        background-color: #e7d6b1
+        background-color: ${({ theme }) => theme.color.hampton}; 
     }
 `;
+
 export const FormFildset = styled.fieldset`
-    border: 1px solid #ccc;
+    border: 1px solid ${({ theme }) => theme.color.silver};
     padding: 20px;
     border-radius: 5px;
     margin: 20px 0px;
 `;
+
 export const FormLegend = styled.legend`
-    background-color: #0b360d;
-    color: aliceblue;
+    background-color: ${({ theme }) => theme.color.deepForestGreen};
+    color: ${({ theme }) => theme.color.aliceBlue};
     border-radius: 5px;
     padding: 10px;
 `;
+
 export const Button = styled.button`
     width: 100%;
     border: none;
-    background-color: #0b360d;
-    color: aliceblue;
+    background-color: ${({ theme }) => theme.color.deepForestGreen};
+    color: ${({ theme }) => theme.color.aliceBlue};
     padding: 10px;
     margin: 1px;
     border-radius: 5px;
 
     &:hover {
-        background-color: #147019;
+        background-color: ${({ theme }) => theme.color.bilbao};
     }
 
     &:active {
-        background-color: rgb(18, 168, 55);
+        background-color: ${({ theme }) => theme.color.salem};
     }
 `;
+
 export const Info = styled.p`
-    background-color: azure;
+    background-color: ${({ theme }) => theme.color.twilightBlue};
     border-radius: 5px;
     text-align: center;
 `;
