@@ -61,10 +61,8 @@ export const Info = styled.p`
 
 export const Loading = styled.p`
     color: ${({ theme }) => theme.color.teal};
-  
 `;
 
 export const Failure = styled.p`
     color: ${({ theme }) => theme.color.amaranth}; 
-   
 `;

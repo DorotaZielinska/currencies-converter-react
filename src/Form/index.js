@@ -1,31 +1,33 @@
 import React, { useState } from "react";
-import { currencies } from "./currencies";
 import { Result } from "./Result";
-import { Button, Field, FormFildset, FormLegend, Info, LabelText } from "./styled";
+import { Button, Failure, Field, FormFildset, FormLegend, Info, LabelText, Loading } from "./styled";
+import { useRatesData } from "./useRatesData";
 
 const Form = () => {
     const [amount, setAmount] = useState("");
-    const [currency, setCurrency] = useState(currencies[0].short);
-    const [result, setResult] = useState("");
+    const [currency, setCurrency] = useState("USD");
+    const [result, setResult] = useState(null);
+    const ratesData = useRatesData();
 
-    const calculateResult = () => {
-        const rate = currencies.find(({ short }) => short === currency).rate;
+    const calculateResult = (amount, currency) => {
+        const rate = ratesData.rates[currency];
+
         setResult({
             sourceAmount: +amount,
-            targetAmount: amount / rate,
+            targetAmount: amount * rate,
             currency,
-        })
-    }
+        });
+    };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currency, amount);
-    }
+        calculateResult(amount, currency);
+    };
 
     const handleReset = () => {
         setAmount("");
         setResult("");
-    }
+    };
 
     return (
         <form
@@ -35,64 +37,80 @@ const Form = () => {
             calculateResult={calculateResult}
             setResult={setResult}
         >
-            <FormFildset className="form__fieldset">
-                <FormLegend>Kalkulator walut</FormLegend>
-                <p>
-                    <label>
-                        <LabelText>Kwota w PLN*:</LabelText>
-                        <Field
-                            value={amount}
-                            onChange={({ target }) => setAmount(target.value)}
-                            name="amountInPln"
-                            type="number"
-                            min="1"
-                            step="any"
-                            required
-                        />
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <LabelText>Przelicz na:</LabelText>
-                        <Field
-                            as="select"
-                            value={currency}
-                            onChange={({ target }) => setCurrency(target.value)}
-                            name="foreignCurrency">
-                            {currencies.map((currency => (
-                                <option
-                                    key={currency.short}
-                                    value={currency.short}
-                                >
-                                    {currency.name}
-                                </option>
-                            )))}
-                        </Field>
-                    </label>
-                </p>
-            </FormFildset>
-            <p>*Pole obowiązkowe</p>
-            < Result result={result} />
-            <p>
-                <Button
-                    className="form__button">
-                    Przelicz
-                </Button>
-            </p>
-            <p>
-                <Button
-                    className="form__button"
-                    type="reset"
-                    onClick={() => handleReset()}>
-                    Wyczyść
-                </Button>
-            </p>
-            <Info>Kalkulator przelicza wartość dowolnie wybranych walut. Najnowsza tabela kursów
-                średnich NBP pochodzi z
-                dnia
-                2023-01-09.
-            </Info>
-        </form>
+            {ratesData.status === "loading"
+                ? (
+                    <Loading>Sekundka...<br />Ładuje kursy walut z Europejskiego Banku Centralnego...</Loading>
+                )
+                : (
+                    ratesData.status === "error" ? (
+                        <Failure>
+                            Hmm... Coś poszło nie tak. Sprawdź, czy masz połączenie z internetem.<br />
+                            Jeśli masz... to wygląda na to, że to nasza wina. Może spróbuj później?
+                        </Failure>
+                    ) : (
+                        <>
+                            <FormFildset className="form__fieldset">
+                                <FormLegend>Kalkulator walut</FormLegend>
+
+                                <p>
+                                    <label>
+                                        <LabelText>Kwota w PLN*:</LabelText>
+                                        <Field
+                                            value={amount}
+                                            onChange={({ target }) => setAmount(target.value)}
+                                            name="amountInPln"
+                                            type="number"
+                                            min="1"
+                                            step="any"
+                                            required
+                                        />
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <LabelText>Przelicz na:</LabelText>
+                                        <Field
+                                            as="select"
+                                            value={currency}
+                                            onChange={({ target }) => setCurrency(target.value)}
+                                            name="foreignCurrency">
+                                            {!!ratesData.rates
+                                                && Object.keys(ratesData.rates).map(((currency) => (
+                                                    <option
+                                                        key={currency}
+                                                        value={currency}
+                                                    >
+                                                        {currency}
+                                                    </option>
+                                                )))}
+                                        </Field>
+                                    </label>
+                                </p>
+                            </FormFildset>
+                            <p>*Pole obowiązkowe</p>
+                            <Result result={result} />
+                            <p>
+                                <Button>
+                                    Przelicz
+                                </Button>
+                            </p>
+                            <p>
+                                <Button
+                                    type="reset"
+                                    onClick={() => handleReset()}>
+                                    Wyczyść
+                                </Button>
+                            </p>
+                            <Info>Kalkulator przelicza wartość dowolnie wybranych walut. Najnowsza tabela kursów
+                                średnich NBP pochodzi z dnia{" "}
+                                {ratesData.date}.
+                            </Info>
+                        </>
+                    )
+                )
+            }
+
+        </form >
     );
 }
 
