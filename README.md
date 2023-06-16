@@ -1,5 +1,5 @@
 # Currency-converter
-![currency-converter-react](public/updatecurrencyconverter.png)
+![currency-converter-react](public/currentscreenaxios.png)
 ## Demo
 https://dorotazielinska.github.io/currencies-converter-react/
 
@@ -7,8 +7,8 @@ This application is easy to use, please type in the first field ("Kwota w PLN*")
 ## Description
 This application I created as a homework of my programing cours at You Code, and to remove that aplication to React, and with information about current Date and time, you can see that on the right corner.
 The main prupose of that application is to check how much money you will get if you want to exchange from polish "zloty" PLN to some other available
-currencies in this simple application.
-Returned values are based on data obtained from the Polish National Bank on 09.01.2023. If you want reset form press button "Wyczyść".
+currencies in this simple application from api exchangerate.host.
+Returned values are based on data obtained from the Polish National Bank on current date. If you want reset form press button "Wyczyść".
 ## Technologies
 - HTML
 - CSS
@@ -16,7 +16,9 @@ Returned values are based on data obtained from the Polish National Bank on 09.0
 - BEM convention
 - React
 - babel
-- hooks useState, useEffect
+- hooks useState, useEffect, custom Hook,
+- styled Components, GlobalStyle, theme - Theme Provider,
+- Fetching and axios data from public API,
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
