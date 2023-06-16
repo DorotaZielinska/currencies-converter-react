@@ -10,6 +10,7 @@ html {
   box-sizing: inherit;
 }
 body {
+  min-height: 100vh;
   max-width: 700px;
   margin: 0 auto;
   padding: 0 20px;
