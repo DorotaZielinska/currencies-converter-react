@@ -9,5 +9,7 @@ export const theme = {
         bilbao: "#147019",
         salem: "#12a837",
         black: "#000000",
+        teal: "#008080",
+        amaranth: "#EA2A50",
     }, 
 };
