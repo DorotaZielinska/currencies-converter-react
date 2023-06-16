@@ -3,7 +3,7 @@ import { Result } from "./Result";
 import { Button, Failure, Field, FormFildset, FormLegend, Info, LabelText, Loading } from "./styled";
 import { useRatesData } from "./useRatesData";
 
-const Form = () => {
+export const Form = () => {
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState("USD");
     const [result, setResult] = useState(null);
@@ -114,4 +114,3 @@ const Form = () => {
     );
 }
 
-export default Form;

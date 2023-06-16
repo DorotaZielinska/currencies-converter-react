@@ -1,4 +1,4 @@
-import Form from "./Form";
+import {Form} from "./Form";
 import { Clock } from './Form/Clock';
 
 function App() {
